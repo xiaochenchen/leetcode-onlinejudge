@@ -36,7 +36,29 @@ public class LongestSubstringWithoutRepeatingCharacters {
     public int lengthOfLongestSubstringFast(String s) {
         // Start typing your Java solution below
         // DO NOT write main() function
-        return 0;
+                int[] exists = new int[26];
+        Arrays.fill(exists, -1);
+
+        int maxLen = 0, curHead = 0, curLen = 0;
+        for(int i = 0; i < s.length(); ++i)
+        {
+            curLen = i - curHead + 1;
+            
+            if(exists[s.charAt(i) - 'a'] != -1 && exists[s.charAt(i) - 'a'] >= curHead)
+            {
+            	curLen -= 1;
+            	curHead = exists[s.charAt(i) - 'a'] + 1;
+            }
+
+            exists[s.charAt(i) - 'a'] = i;
+            
+            if(curLen > maxLen)
+            {
+            	maxLen = curLen;
+            }
+        }
+        
+        return maxLen;
     }
 
 }
