@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -9,40 +7,36 @@ import java.util.Map;
  * Time: 10:59 PM
  */
 public class LongestSubstringWithoutRepeatingCharacters {
-    public int lengthOfLongestSubstring(String s) {
-        // Start typing your Java solution below
-        // DO NOT write main() function
-        Map<Character,ArrayList<Integer>> indexListMap = new HashMap<Character, ArrayList<Integer>>();
-
+    public int lengthOfLongestSubstringSlow(String s) {
+        int longestLen = 0;
         for(int i = 0; i < s.length(); ++i)
         {
-            if(indexListMap.get(s.charAt(i)) == null)
+            Set<Character> charSet = new HashSet<Character>();
+            charSet.add(s.charAt(i));
+            int curLen = 1;
+            for(int j = i + 1; j < s.length(); ++j)
             {
-                ArrayList<Integer> indexList = new ArrayList<Integer>();
-                indexList.add(i);
-                indexListMap.put(s.charAt(i), indexList);
-            }
-            else
-            {
-                indexListMap.get(s.charAt(i)).add(i);
-            }
-        }
-
-        int max_len = 0;
-        for(Character ch : indexListMap.keySet())
-        {
-            ArrayList<Integer> indexList = indexListMap.get(ch);
-            for(int i = 1; i < indexList.size(); ++i)
-            {
-                int len = indexList.get(i) - indexList.get(i-1) - 1;
-                if(len > max_len)
+                if(!charSet.contains(s.charAt(j)))
                 {
-                    max_len = len;
+                    charSet.add(s.charAt(j));
+                    if(j - i + 1 > curLen)
+                        curLen = j - i + 1;
                 }
+                else
+                    break;
+            }
+            if(curLen > longestLen)
+            {
+                longestLen = curLen;
             }
         }
+        return longestLen;
+    }
 
-        return max_len;
+    public int lengthOfLongestSubstringFast(String s) {
+        // Start typing your Java solution below
+        // DO NOT write main() function
+        return 0;
     }
 
 }
