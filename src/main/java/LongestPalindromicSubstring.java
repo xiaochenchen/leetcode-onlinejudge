@@ -121,4 +121,71 @@ public class LongestPalindromicSubstring
 
         return s.substring(startIndex, startIndex + maxLen);
     }
+    
+    /**
+     * A palindrome mirrors around its center.
+	 * Therefore a palindrome can be expanded from its center.
+	 * 
+	 * The center could be a letter or between two letters.
+	 * There are in total 2N - 1 such centers.	=> O(N)
+	 * 
+	 * Expand from each center and find the longest panlindrome.	=> O(n)
+	 * 
+	 * O(n^2)
+	 *  
+	 * @param s
+	 * @return
+	 */
+	public String longestPalindromeExpandAroundCenter(String s)
+	{
+        int startIndex = 0, maxLen = 0;
+        
+        for(int i = 0; i < s.length(); ++i)
+        {
+            // let i be the center of the palindrome
+            int l = i, r = i;
+            while(l > 0 && r < s.length() - 1)
+            {
+                if(s.charAt(l-1) != s.charAt(r+1))
+                {
+                    break;
+                }
+                else
+                {
+                    --l;
+                    ++r;
+                }
+            }
+            int curLen = r - l + 1;
+            if(curLen > maxLen)
+            {
+                startIndex = l;
+                maxLen = curLen;
+            }
+            
+            // let i+0.5 be the center of the palindrome
+            l = i;
+            r = i + 1;
+            while(l >= 0 && r < s.length())
+            {
+                if(s.charAt(l) == s.charAt(r))
+                {
+                    curLen = r - l + 1;
+                    if(curLen > maxLen)
+                    {
+                        startIndex = l;
+                        maxLen = curLen;
+                    }
+                }
+                else
+                {
+                   break; 
+                }
+                l -= 1;
+                r += 1;
+            }
+        }
+        
+        return s.substring(startIndex, startIndex + maxLen);
+	}
 }
