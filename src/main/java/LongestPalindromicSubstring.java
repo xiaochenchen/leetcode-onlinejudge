@@ -188,4 +188,95 @@ public class LongestPalindromicSubstring
         
         return s.substring(startIndex, startIndex + maxLen);
 	}
+
+    /**
+     * http://leetcode.com/2011/11/longest-palindromic-substring-part-ii.html
+     *
+     * @param s
+     * @return
+     */
+    public String longestPalindromeManacher(String s)
+    {
+        String T = preProcessing(s);
+
+        if(T == null || T.trim().isEmpty())
+        {
+            return T;
+        }
+
+        int[] P = new int[T.length()];
+
+        int C = 0, R = 0;
+
+        for(int i = 0; i < T.length(); ++i)
+        {
+            int i_mirror = C - (i - C);
+
+            if(R > i)
+            {
+                if(P[i_mirror] <= R - i)
+                {
+                    P[i] = P[i_mirror];
+                }else
+                {
+                    P[i] = R - i;
+                }
+            }
+            else
+            {
+                P[i] = 0;
+            }
+
+            // attemp to expand palindrome centered at i
+            while( i-P[i] > 0 && i+P[i] < T.length()-1 && T.charAt(i+P[i]+1) == T.charAt(i-P[i]-1))
+            {
+                P[i]++;
+            }
+
+            // if palindrome centered at i expand past R
+            // adjust center based on expanded palindrome
+            if(i + P[i] > R)
+            {
+                C = i;
+                R = i + P[i];
+            }
+        }
+
+        //System.out.println(Arrays.toString(T.toCharArray()));
+        //System.out.println(Arrays.toString(P));
+
+        int maxLen = 0, centerIndex = 0;
+        for(int i = 0; i < P.length; ++i)
+        {
+            if(P[i] > maxLen)
+            {
+                maxLen = P[i];
+                centerIndex = i;
+            }
+        }
+
+        //System.out.println(centerIndex);
+        //System.out.println(maxLen);
+        //System.out.println((centerIndex - maxLen)/2);
+        //System.out.println((centerIndex + maxLen)/2);
+
+        return s.substring((centerIndex - maxLen)/2, (centerIndex + maxLen)/2);
+    }
+
+    private String preProcessing(String s)
+    {
+        if(s == null || s.trim().isEmpty())
+        {
+            return s;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for(char c : s.toCharArray())
+        {
+            sb.append("#").append(c);
+        }
+        sb.append("#");
+
+        return sb.toString();
+    }
 }

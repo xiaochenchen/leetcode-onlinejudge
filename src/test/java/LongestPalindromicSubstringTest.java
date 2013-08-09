@@ -14,4 +14,13 @@ public class LongestPalindromicSubstringTest
         LongestPalindromicSubstring lps = new LongestPalindromicSubstring();
         lps.longestPalindromeDP("");
     }
+
+    @Test
+    public void longestPalindromeManacherTest()
+    {
+        LongestPalindromicSubstring lps = new LongestPalindromicSubstring();
+        //System.out.println(lps.longestPalindromeManacher("a"));
+        System.out.println(lps.longestPalindromeManacher("ccc"));
+        //System.out.println(lps.longestPalindromeManacher("abcbaddef"));
+    }
 }
