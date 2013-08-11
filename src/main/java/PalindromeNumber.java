@@ -14,6 +14,40 @@ public class PalindromeNumber
 {
     public boolean isPalindrome(int x)
     {
+        // consider all negative integers non palindrome
+        if( x < 0 )
+        {
+            return false;
+        }
+
+        // caculate the number of digits for the input
+        int numOfDigits = 0;
+        int input = x;
+        while(input != 0)
+        {
+            input /= 10;
+            numOfDigits++;
+        }
+
+        // compare last digit with first digit, moving towards the center
+        int l = numOfDigits, r = 1;
+        while(l > r)
+        {
+            int left = (x / (int)Math.pow(10, (l--) - 1)) % 10;
+            int right = (x / (int)Math.pow(10, (r++) - 1)) % 10;
+            // if not the same, return false - non palindrome
+            if(left != right)
+            {
+                return false;
+            }
+        }
+
+        // palindrome
+        return true;
+    }
+
+    public boolean isPalindromeByReverse(int x)
+    {
         // leetcode onlinejudge test cases output fasle for -2147447412
         // false for all negative numbers?
         // I guess this is more like an implementation choice

@@ -12,7 +12,8 @@ public class PalindromeNumberTest {
     @Test
     public void testIsPalindrome() throws Exception {
         PalindromeNumber pn = new PalindromeNumber();
-        //Assert.assertFalse(pn.isPalindrome(-2147483648));
-        Assert.assertFalse(pn.isPalindrome(-2147447412));
+//        Assert.assertFalse(pn.isPalindromeByReverse(-2147483648));
+//        Assert.assertFalse(pn.isPalindromeByReverse(-2147447412));
+        Assert.assertFalse(pn.isPalindrome(10));
     }
 }
