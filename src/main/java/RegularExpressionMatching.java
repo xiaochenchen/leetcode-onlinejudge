@@ -68,4 +68,145 @@ public class RegularExpressionMatching
 
 		return isMatch(s, p.substring(2));
 	}
+	
+		public boolean isMatchDP(String s, String p)
+	{
+		if(s == null || p == null)
+		{
+			return false;
+		}
+		
+		if(s.isEmpty() || p.isEmpty())
+		{
+			return s.equals(p);
+		}
+		
+		if(p.charAt(0) == '*')
+		{
+			return false;
+		}
+				
+		int n = p.length();
+		int m = s.length();
+		
+		boolean[][] a = new boolean[n][m];
+		
+		// initialize first row
+		// row number increases as source string grows
+		if(s.charAt(0) == p.charAt(0))
+		{
+			a[0][0] = true;
+		}
+		
+		// initialize first column
+		//for(int i = 1; i < n; ++i)
+		//{
+		//	if()
+		//}
+		
+		if(p.length() > 1 && p.charAt(1) == '*')
+		{
+			a[1][0] = a[0][0];
+		}
+		
+		for(int i = 1; i < n; ++i)
+		{
+			for(int j = i; j < m; ++j)
+			{
+				if(p.charAt(i) == '*')
+				{
+					a[i][j] = a[i-1][j]
+							|| ( a[i-1][j-1] && ( s.charAt(j-1) == s.charAt(j) ||  p.charAt(i-1) == '.' ) )
+									|| ( a[i][j-1] && s.charAt(j-1) == s.charAt(j) ) ;
+				}
+				else if(p.charAt(i) == '.')
+				{
+					a[i][j] = a[i-1][j-1];
+				}
+				else
+				{
+					a[i][j] = a[i-1][j-1] && ( p.charAt(i) == s.charAt(j) );
+				}
+			}
+		}
+		
+		System.out.println(Arrays.deepToString(a));
+		System.out.println(a[n-1][m-1]);
+		
+		return a[n-1][m-1];
+	}
+	
+	public boolean isMatchDPOL(String s, String p)
+	{
+        boolean[] lastRow = new boolean[s.length()+1]; 
+        boolean[] currRow = new boolean[s.length()+1]; 
+        boolean[] tmpRow;
+ 
+        // init star[] and pattern
+        int cnt = 0;
+        for (int i=0; i<p.length(); i++) {
+            if (p.charAt(i)=='*')
+                cnt++;
+        }
+        boolean[] star = new boolean[p.length()-cnt];
+        StringBuffer sb = new StringBuffer(p.length());
+        int index = -1;
+        for (int i=0; i<p.length(); i++) {
+            if (p.charAt(i)=='*') {
+                star[index] = true;
+            } else {
+                sb.append(p.charAt(i));
+                index++;
+            }
+        }
+        p = sb.toString();
+ 
+        // DP
+        lastRow[0] = true;
+        for (int i=0; i<p.length(); i++) {
+            // set currRow[0]
+            if (star[i] && lastRow[0]) {
+                currRow[0] = true;
+            } else {
+                currRow[0] = false;
+            }
+ 
+            for (int j=0; j<s.length(); j++) {
+                int rowIndex = j + 1;
+ 
+                if (!star[i]) {        
+                    if (p.charAt(i)=='.') {
+                        if (lastRow[rowIndex-1]) {
+                            currRow[rowIndex] = true;
+                        } else {
+                            currRow[rowIndex] = false;                        
+                        }                    
+                    } else {
+                        if (p.charAt(i)==s.charAt(j) && lastRow[rowIndex-1]) {
+                            currRow[rowIndex] = true;
+                        } else {
+                            currRow[rowIndex] = false;                        
+                        }                        
+                    }
+                } else {
+                    if (lastRow[rowIndex]) {
+                        currRow[rowIndex] = true;
+                    } else if (lastRow[rowIndex-1] || currRow[rowIndex-1]) {
+                        if (p.charAt(i)=='.' || p.charAt(i)==s.charAt(j)) {
+                            currRow[rowIndex] = true;
+                        } else {
+                            currRow[rowIndex] = false;
+                        }
+                    } else {
+                        currRow[rowIndex] = false;
+                    }
+                }
+            }            
+            // swap lastRow and currRow
+            tmpRow = lastRow;
+            lastRow = currRow;
+            currRow = tmpRow;
+        }
+        return lastRow[lastRow.length-1];		
+	}
 }
