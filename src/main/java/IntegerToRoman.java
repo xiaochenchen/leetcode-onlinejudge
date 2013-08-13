@@ -34,7 +34,7 @@ public class IntegerToRoman
 					sb.append(mappings.get(base)).append(mappings.get(base)).append(mappings.get(base));
 					break;
 				case 4:
-					sb.append(mappings.get(base)).append(base * 5);
+					sb.append(mappings.get(base)).append(mappings.get(base * 5));
 					break;
 				case 5:
 					sb.append(mappings.get(base * 5));
