@@ -64,7 +64,7 @@ public class LongestPalindromicSubstring
      * solve the same problem with dynamic programming,
      * assuming the length of the string is less than 1000 for simplicity
      *
-     * Define P[ i, j ] ← true iff the substring Si … Sj is a palindrome, otherwise false.
+     * Define P[ i, j ] ← true if the substring Si … Sj is a palindrome, otherwise false.
      * P[ i, j ] ← ( P[ i+1, j-1 ] and Si == Sj )
      *
      * base cases (1 and 2 letters):
