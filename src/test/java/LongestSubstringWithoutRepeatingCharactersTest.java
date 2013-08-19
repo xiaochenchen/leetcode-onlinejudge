@@ -13,7 +13,7 @@ public class LongestSubstringWithoutRepeatingCharactersTest {
     public void lengthOfLongestSubstringSlowTest()
     {
         LongestSubstringWithoutRepeatingCharacters test = new LongestSubstringWithoutRepeatingCharacters();
-        Assert.assertEquals(3, test.lengthOfLongestSubstringSlow("abcabcbb"));
+        Assert.assertEquals(3, test.lengthOfLongestSubstringBruteForce("abcabcbb"));
     }
 
     @Test

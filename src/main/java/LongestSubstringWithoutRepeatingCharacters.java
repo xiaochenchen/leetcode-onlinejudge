@@ -17,7 +17,7 @@ import java.util.*;
  */
 
 public class LongestSubstringWithoutRepeatingCharacters {
-    public int lengthOfLongestSubstringSlow(String s) {
+    public int lengthOfLongestSubstringBruteForce(String s) {
         int longestLen = 0;
         for(int i = 0; i < s.length(); ++i)
         {
@@ -46,22 +46,31 @@ public class LongestSubstringWithoutRepeatingCharacters {
     public int lengthOfLongestSubstringFast(String s) {
         // Start typing your Java solution below
         // DO NOT write main() function
-                int[] exists = new int[26];
+        int[] exists = new int[26];
         Arrays.fill(exists, -1);
 
-        int maxLen = 0, curHead = 0, curLen = 0;
+        // scan one character at a time
+        // track the head and length of current longest substring without repeating characters(clswrc)
+        // if the next scanned character exists in the current clswrc
+        // move head to the first character after the former occurence of the repeating character
+        int maxLen = 0, curHead = 0, curLen;
         for(int i = 0; i < s.length(); ++i)
         {
+            // calculate the current length
             curLen = i - curHead + 1;
-            
+
+            // if the current character is a repeating character
+            // reduce (nullify) the current length, move the current head to the character after first occurence of the repeating character
             if(exists[s.charAt(i) - 'a'] != -1 && exists[s.charAt(i) - 'a'] >= curHead)
             {
             	curLen -= 1;
             	curHead = exists[s.charAt(i) - 'a'] + 1;
             }
 
+            // update the index (to latest) of the current character
             exists[s.charAt(i) - 'a'] = i;
-            
+
+            // update maxLen if curLen is greater than maxLen
             if(curLen > maxLen)
             {
             	maxLen = curLen;
