@@ -242,9 +242,6 @@ public class LongestPalindromicSubstring
             }
         }
 
-        //System.out.println(Arrays.toString(T.toCharArray()));
-        //System.out.println(Arrays.toString(P));
-
         int maxLen = 0, centerIndex = 0;
         for(int i = 0; i < P.length; ++i)
         {
@@ -254,11 +251,6 @@ public class LongestPalindromicSubstring
                 centerIndex = i;
             }
         }
-
-        //System.out.println(centerIndex);
-        //System.out.println(maxLen);
-        //System.out.println((centerIndex - maxLen)/2);
-        //System.out.println((centerIndex + maxLen)/2);
 
         return s.substring((centerIndex - maxLen)/2, (centerIndex + maxLen)/2);
     }

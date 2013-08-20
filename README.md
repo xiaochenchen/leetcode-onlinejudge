@@ -21,3 +21,12 @@ Dynamic Programming O(n^2):
         length 2: p(i, i+1) = true if S(i) == S(i+1)
     matrix calculation:
         p(i, j) = true if p(i+1, j-1) == true and S(i) == S(j)
+
+Expand Around Center O(n^2):
+    A palindrome mirrors around its center.
+	Therefore a palindrome can be expanded from its center.
+
+	The center could be a letter or between two letters.
+	There are in total 2N - 1 such centers.	=> O(N)
+
+	Expand from each center and find the longest palindrome.	=> O(n)
