@@ -30,3 +30,16 @@ Expand Around Center O(n^2):
 	There are in total 2N - 1 such centers.	=> O(N)
 
 	Expand from each center and find the longest palindrome.	=> O(n)
+Manacher Algorithm O(n):
+    C denotes the center of current maximum palindrome, R denotes the right border of the current maximum palindrome
+    and i is the current index we are calculation the palindrome centered at i, i' is i's mirror over C
+
+    if P[i'] < R - i
+    then P[i] <- P[i']
+    else R - i // of course 0 on border cases
+
+    try to grow P[i] by comparing whether S[i- P[i] - 1] = S[i + P[i] + 1]
+
+    if i + P[i] grows beyond R, move C and R so that
+    C = i;
+    R = i + P[i];
