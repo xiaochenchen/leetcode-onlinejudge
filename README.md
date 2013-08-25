@@ -38,6 +38,6 @@ record the problems solved on leetcode onlinejudge
 >   * `then P[i] <- P[i']`
 >   * `else R - i // of course 0 on border cases`
 > 2. try to grow P[i] by comparing whether S[i- P[i] - 1] = S[i + P[i] + 1]
-`if i + P[i] grows beyond R, move C and R so that`
-`C = i;`
-`R = i + P[i];`
+>   * `if i + P[i] grows beyond R, move C and R so that`
+>   * `C = i;`
+>   * `R = i + P[i];`
