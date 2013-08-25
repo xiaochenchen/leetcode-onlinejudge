@@ -3,6 +3,7 @@ leetcode-onlinejudge
 record the problems solved on leetcode onlinejudge
 
 (1) Longest Substring Without Repeating Characters:
+------------------
 
 Brute Force O(n^2): start from each of the n characters, find the longest substring without repeating characters for all of them
 
