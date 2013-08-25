@@ -6,7 +6,7 @@ record the problems solved on leetcode onlinejudge
 ------
 
 * Brute Force O(n^2):
-> start from each of the n characters, find the longest substring without repeating characters for all of them
+    start from each of the n characters, find the longest substring without repeating characters for all of them
 
 * O(n) solution:
 >scan one character at a time
