@@ -21,11 +21,12 @@ record the problems solved on leetcode onlinejudge
 > loop through all substrings, check if they are palindrome
 
 * Dynamic Programming O(n^2):
-> * base case:
-> > * length 1: p(i, i) = true
-> > * length 2: p(i, i+1) = true if S(i) == S(i+1)
-> * matrix calculation:
-> > * p(i, j) = true if p(i+1, j-1) == true and S(i) == S(j)
+>
+* base case:
+    * length 1: p(i, i) = true
+    * length 2: p(i, i+1) = true if S(i) == S(i+1)
+* matrix calculation:
+    * p(i, j) = true if p(i+1, j-1) == true and S(i) == S(j)
 
 * Expand Around Center O(n^2):
     A palindrome mirrors around its center.
