@@ -31,13 +31,12 @@ record the problems solved on leetcode onlinejudge
 > 1. A palindrome mirrors around its center. Therefore a palindrome can be expanded from its center.
 > 2. The center could be a letter or between two letters. There are in total 2N - 1 such centers.	=> O(N)
 > 3. Expand from each center and find the longest palindrome.	=> O(n)
+
 * Manacher Algorithm O(n):
 > 1. Let C denotes the center of current maximum palindrome, R denotes the right border of the current maximum palindrome and i is the current index we are calculation the palindrome centered at i, i' is i's mirror over C
-
-    if P[i'] < R - i
-    then P[i] <- P[i']
-    else R - i // of course 0 on border cases
-
+>   `if P[i'] < R - i`
+>   `then P[i] <- P[i']`
+>   `else R - i // of course 0 on border cases`
 > 2. try to grow P[i] by comparing whether S[i- P[i] - 1] = S[i + P[i] + 1]
 `if i + P[i] grows beyond R, move C and R so that`
 `C = i;`
