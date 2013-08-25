@@ -17,17 +17,17 @@ O(n) solution:
 2. Longest Palindrome Substring
 ------
 
-*Brute Force O(n^3):
+* Brute Force O(n^3):
 loop through all substrings, check if they are palindrome
 
-*Dynamic Programming O(n^2):
+* Dynamic Programming O(n^2):
     base case:
         length 1: p(i, i) = true
         length 2: p(i, i+1) = true if S(i) == S(i+1)
     matrix calculation:
         p(i, j) = true if p(i+1, j-1) == true and S(i) == S(j)
 
-*Expand Around Center O(n^2):
+* Expand Around Center O(n^2):
     A palindrome mirrors around its center.
 	Therefore a palindrome can be expanded from its center.
 
@@ -35,7 +35,7 @@ loop through all substrings, check if they are palindrome
 	There are in total 2N - 1 such centers.	=> O(N)
 
 	Expand from each center and find the longest palindrome.	=> O(n)
-*Manacher Algorithm O(n):
+* Manacher Algorithm O(n):
     C denotes the center of current maximum palindrome, R denotes the right border of the current maximum palindrome
     and i is the current index we are calculation the palindrome centered at i, i' is i's mirror over C
 
