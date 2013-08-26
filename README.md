@@ -46,6 +46,7 @@ record the problems solved on leetcode onlinejudge
 ------
 
 * Recursive:
+
     If the next character of p is NOT ‘*’, then it must match the current character of s.
     Continue pattern matching with the next character of both s and p.
     If the next character of p is ‘*’, then we do a brute force exhaustive matching of 0, 1,
