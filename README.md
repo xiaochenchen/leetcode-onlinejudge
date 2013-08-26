@@ -41,3 +41,12 @@ record the problems solved on leetcode onlinejudge
 >   * `if i + P[i] grows beyond R, move C and R so that`
 >   * `C = i;`
 >   * `R = i + P[i];`
+
+3. Regular Expression Matching
+------
+
+* Recursive:
+    If the next character of p is NOT ‘*’, then it must match the current character of s.
+    Continue pattern matching with the next character of both s and p.
+    If the next character of p is ‘*’, then we do a brute force exhaustive matching of 0, 1,
+    or more repeats of current character of p… Until we could not match any more characters.
