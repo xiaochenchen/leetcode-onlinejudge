@@ -51,3 +51,7 @@ record the problems solved on leetcode onlinejudge
     Continue pattern matching with the next character of both s and p.
     If the next character of p is ‘*’, then we do a brute force exhaustive matching of 0, 1,
     or more repeats of current character of p… Until we could not match any more characters.
+
+4. 3Sum
+------
+* O(n^2) solution : sort the array, loop through the array, pick one at a time, then loop through the elements after the pivot chosen, with two pointers first and last, advance first or decrease last depends on the condition
