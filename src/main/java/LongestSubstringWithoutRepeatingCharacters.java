@@ -29,11 +29,12 @@ public class LongestSubstringWithoutRepeatingCharacters {
                 if(!charSet.contains(s.charAt(j)))
                 {
                     charSet.add(s.charAt(j));
-                    if(j - i + 1 > curLen)
-                        curLen = j - i + 1;
+                    curLen = j - i + 1;
                 }
                 else
+                {
                     break;
+                }
             }
             if(curLen > longestLen)
             {
