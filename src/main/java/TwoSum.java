@@ -39,7 +39,7 @@ public class TwoSum {
         for( i = 0; i < numbers.length; ++i )
         {
             int remainder = target - numbers[i];
-            if(existingNums.get(remainder) != null)
+            if(existingNums.get(remainder) != null && existingNums.get(remainder) > i)
             {
                 result = new int[2];
                 result[0] = i + 1;
