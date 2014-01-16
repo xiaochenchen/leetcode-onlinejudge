@@ -80,5 +80,26 @@ public class LongestSubstringWithoutRepeatingCharacters {
         
         return maxLen;
     }
+    
+    public int lengthOfLongestSubstringFastImproved(String s)
+    {
+    	int maxLen = 0, currHead = 0, currTail = 0;
+        int exists[] = new int[26]; // assume only alphabetic letters for now
+        Arrays.fill(exists, -1);
+        while(currTail < s.length())
+        {
+            if(exists[s.charAt(currTail) - 'a'] >= currHead)
+            {
+                currHead = exists[s.charAt(currTail) - 'a'] + 1;
+            }
+            exists[s.charAt(currTail) - 'a'] = currTail;
+            if(currTail - currHead + 1 > maxLen)
+            {
+                maxLen = currTail - currHead + 1;
+            }
+            ++currTail;
+        }
+        return maxLen;
+    }
 
 }
