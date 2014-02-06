@@ -102,4 +102,56 @@ public class AddTwoNumbers
 		
 		return result;
 	}
+	
+	public ListNode addTwoNumbers2(ListNode l1, ListNode l2)
+	{
+        ListNode result_head = null;
+        ListNode result_current = null;
+        int digit = 0;
+        int overflow = 0;
+        
+        while(l1 != null && l2 != null)
+        {
+            digit = (l1.val + l2.val + overflow) % 10;
+            overflow = (l1.val + l2.val + overflow) >= 10 ? 1 : 0;
+            if(result_head == null)
+            {
+                result_head = new ListNode(digit);
+                result_current = result_head;
+            }
+            else
+            {
+                result_current.next = new ListNode(digit);
+                result_current = result_current.next;
+            }
+            l1 = l1.next;
+            l2 = l2.next;
+        }
+        
+        while(l1 != null)
+        {
+            digit = (l1.val + overflow) % 10;
+            overflow = (l1.val + overflow) >= 10 ? 1 : 0;
+            result_current.next = new ListNode(digit);
+            result_current = result_current.next;
+            l1 = l1.next;
+        }
+        
+        while(l2 != null)
+        {
+            digit = (l2.val + overflow) % 10;
+            overflow = (l2.val + overflow) >= 10 ? 1 : 0;
+            result_current.next = new ListNode(digit);
+            result_current = result_current.next;
+            l2 = l2.next;
+        }
+        
+        if(overflow > 0)
+        {
+            result_current.next = new ListNode(overflow);
+            result_current = result_current.next;
+        }
+        
+        return result_head;
+	}
 }
