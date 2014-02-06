@@ -31,4 +31,26 @@ public class ReverseInteger
         }
         return ret * sign;
     }
+    
+    public int reverse2(int x)
+    {
+    	int sign = 1;
+    	int number = 0;
+    	int result = 0;
+    	
+    	if(x < 0)
+    	{
+    		sign = -1;
+    		number = x * -1;
+    	}
+    	
+    	while(number > 0)
+    	{
+    		int remainder = number % 10;
+    		result = result * 10 + remainder;
+    		number = number / 10;
+    	}
+    	
+    	return result * sign;
+    }
 }
