@@ -60,4 +60,51 @@ public class StringToInteger
 
         return (int)curVal;
     }
+    
+    public int atoi2(String str)
+    {
+    	if(str == null || str.isEmpty())
+    		return 0;
+    	
+    	// remove white spaces
+    	str = str.trim();
+    	
+    	int sign = 1;
+    	int curIndex = 0;
+    	long value = 0;
+    	
+    	char[] chars = str.toCharArray();
+    	
+    	if(str.charAt(curIndex) == '+') {
+    		curIndex++;
+    		sign = 1;
+    	} else if (str.charAt(0) == '-') {
+    		curIndex++;
+    		sign = -1;
+    	}
+    	
+    	while(curIndex < chars.length)
+    	{
+    		char curChar = chars[curIndex++];
+    		if(curChar >= '0' && curChar <= '9') {
+    			// perform conversion
+    			value = value * 10 + (curChar - '0');
+    		} else {
+    			break;
+    		}
+    	}
+    	
+    	value *= sign;
+    	
+    	if(value > Integer.MAX_VALUE)
+    	{
+    		return Integer.MAX_VALUE;
+    	} else if(value < Integer.MIN_VALUE) {
+    		return Integer.MIN_VALUE;
+    	} else {
+    		return (int)value;
+    	}
+    	
+    	
+    }
 }
