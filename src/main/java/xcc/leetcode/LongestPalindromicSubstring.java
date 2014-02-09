@@ -1,5 +1,4 @@
 package xcc.leetcode;
-import java.util.Arrays;
 
 /**
  * Problem Description:
