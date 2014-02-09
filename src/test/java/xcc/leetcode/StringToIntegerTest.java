@@ -1,7 +1,11 @@
+package xcc.leetcode;
 import junit.framework.Assert;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import xcc.leetcode.StringToInteger;
 
 /**
  * Created with IntelliJ IDEA.

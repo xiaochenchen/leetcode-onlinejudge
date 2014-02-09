@@ -1,4 +1,7 @@
+package xcc.leetcode;
 import org.junit.Test;
+
+import xcc.leetcode.LongestPalindromicSubstring;
 
 /**
  * Created with IntelliJ IDEA.

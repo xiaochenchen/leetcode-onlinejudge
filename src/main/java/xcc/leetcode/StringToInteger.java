@@ -1,3 +1,4 @@
+package xcc.leetcode;
 /**
  * Created with IntelliJ IDEA.
  * User: Xiaochen Chen

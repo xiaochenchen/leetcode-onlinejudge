@@ -1,3 +1,4 @@
+package xcc.leetcode;
 
 public class LongestCommonPrefix 
 {

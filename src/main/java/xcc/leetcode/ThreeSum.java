@@ -1,3 +1,4 @@
+package xcc.leetcode;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -68,5 +69,53 @@ public class ThreeSum {
         }
 
         return results;
+    }
+    
+    public ArrayList<ArrayList<Integer>> threeSum2(int[] num)
+    {
+    	ArrayList<ArrayList<Integer>> results = new ArrayList<ArrayList<Integer>>();
+    	
+    	Arrays.sort(num);
+    		
+    	for(int i = 0; i < num.length - 2; ++i)
+    	{
+    		if(num[i] > 0)
+    		{
+    			break;
+    		}
+    		
+    		// skip duplicates
+    		if(i > 0 && num[i-1] == num[i])
+    		{
+    			continue;
+    		}
+    		
+    		int first = i + 1;
+    		int last = num.length - 1;
+    		
+    		while(first < last)
+    		{
+    			int sum = num[i] + num[first] + num[last];
+    			if(sum < 0)
+    			{
+    				do { first++; } while (first < num.length && num[first] == num[first - 1]);
+    			} 
+    			else if(sum > 0)
+    			{
+    				do { last--; } while (last > 0 && num[last] == num[last + 1]);
+    			} 
+    			else
+    			{
+    				//found a match
+    				ArrayList<Integer> result = new ArrayList<Integer>();
+    				result.add(num[i]);result.add(num[first]);result.add(num[last]);
+    				results.add(result);
+    				do { first++; } while (first < num.length && num[first] == num[first - 1]);
+    				do { last--; } while (last > i && num[last] == num[last + 1]);
+    			}
+    		}
+    	}
+    	
+    	return results;
     }
 }

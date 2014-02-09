@@ -1,5 +1,9 @@
+package xcc.leetcode;
 import junit.framework.Assert;
+
 import org.junit.Test;
+
+import xcc.leetcode.ThreeSumClosest;
 
 /**
  * Created with IntelliJ IDEA.
