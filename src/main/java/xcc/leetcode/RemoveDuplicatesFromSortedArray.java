@@ -1,7 +1,5 @@
 package xcc.leetcode;
 
-import java.util.Arrays;
-
 public class RemoveDuplicatesFromSortedArray {
 	public int removeDuplicates(int[] A)
 	{		
