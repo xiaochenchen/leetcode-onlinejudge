@@ -13,7 +13,7 @@ public class SudokuSolver
     private final int BOARD_LEN = 9;
 
     public void solveSudoku(char[][] board) {
-        solve(board);
+    	solve(board);
     }
 
     private boolean solve(char[][] board)
@@ -25,9 +25,9 @@ public class SudokuSolver
 
         int r = unsolvedPosition[0], c = unsolvedPosition[1];
 
-        for(int n = 0; n < BOARD_LEN; n++)
+        for(int n = 1; n <= BOARD_LEN; n++)
         {
-            if(isSafe(board, r, c, n))
+            if(isSafe(board, r, c, Character.forDigit(n, 10)))
             {
                 board[r][c] = Character.forDigit(n, 10);
                 if(solve(board))
@@ -62,7 +62,7 @@ public class SudokuSolver
         return unsolvedPosition;
     }
 
-    private boolean isSafe(char[][] board, int r, int c, int num)
+    private boolean isSafe(char[][] board, int r, int c, char num)
     {
         // check row
         for(int j = 0; j < BOARD_LEN; j++)
