@@ -2,8 +2,6 @@ package xcc.leetcode.sum;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Given a set of candidate numbers (C) and a target number (T),
@@ -59,12 +57,5 @@ public class CombinationSum
             generate(candidates, results, result, i, currSum + candidates[i], target);
             result.remove(result.size() - 1);
         }
-    }
-
-    public static void main(String[] args)
-    {
-        CombinationSum cs = new CombinationSum();
-        int[] candidates = {2,3,6,7};
-        System.out.printf(cs.combinationSum(candidates, 7).toString());
     }
 }
