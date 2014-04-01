@@ -1,10 +1,14 @@
-package xcc.leetcode;
+package xcc.leetcode.sudoku;
 
 import java.util.Arrays;
 
 /**
+ * Write a program to solve a Sudoku puzzle by filling the empty cells.
+ * Empty cells are indicated by the character '.'.
+ * You may assume that there will be only one unique solution.
+ *
  * Created with IntelliJ IDEA.
- * User: Xiaochen Chen
+ * User: lightsaber
  * Date: 2/13/14
  * Time: 7:08 PM
  */
