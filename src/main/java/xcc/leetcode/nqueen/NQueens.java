@@ -79,11 +79,18 @@ public class NQueens
             // check if there is a queen at column c
             if(rows[i] == c) return false;
 
+
+            // check if there is a queen at the diagonal (left up and right up)
+            if(r - i == Math.abs(c - rows[i])) return false;
+
+            // original way to check diagonal that I wrote
+            /*
             // check if there is a queen at the left-to-right diagonal
             if(i + (c - r) >= 0 && i + (c - r) < rows.length && rows[i] == i + (c - r)) return false;
 
             // check if there is a queen at the right-to-left diagonal
             if((c + r) - i >= 0 && (c + r) - i < rows.length && rows[i] == (c + r) - i) return false;
+            */
         }
 
         return true;
